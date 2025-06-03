@@ -6,37 +6,38 @@
   <title>Zegar Backyard</title>
   <style>
     html, body {
-margin: 0; padding: 0;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* zapobiega pionowemu scrollowaniu */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: #0a0a23;
   font-family: 'Courier New', Courier, monospace;
-  /* usuń flex i centerowanie - damy to na #container */
-  height: 100%;
-  overflow: auto; /* zezwól na przewijanie, jeśli będzie potrzeba */
 }
 
 #container {
-  background: #0a0a23;
-  color: white;
-  border-radius: 0px;
-  padding: 40px 60px;
-  text-align: center;
+  padding: clamp(10px, 3vw, 20px) clamp(15px, 5vw, 40px);
   width: 90vw;
-  max-width: 900px; /* większe max */
-  margin: 20px auto; /* centrowanie z odstępem od góry */
+  max-width: 1200px;
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  gap: 30px; /* odstępy między elementami */
+  text-align: center;
+  color: white;
+  background: #0a0a23;
+  position: relative;
+  z-index: 1;
 }
+
 #time, #loop {
   font-size: clamp(5rem, 10vw, 12rem); /* większa czcionka */
-  margin: 0;
+  margin: 5px 0;
   white-space: nowrap;
 }
 
 #status {
   font-size: clamp(2rem, 4vw, 4rem);
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 #progressBarContainer {
   background-color: #333;
