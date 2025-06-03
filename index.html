@@ -66,6 +66,11 @@
     }
     #quote {
       color: #dddddd;
+white-space: normal;      /* pozwala na zawijanie tekstu */
+  overflow-wrap: break-word; /* wymusza łamanie długich słów */
+  word-break: break-word;   /* dodatkowe łamanie */
+  max-width: 100%;          /* zapobiega przekraczaniu szerokości kontenera */
+  margin: 15px 0 0 0;       /* opcjonalnie dopasuj margines */
     }
     #countdownOverlay {
       position: fixed;
