@@ -28,11 +28,11 @@
       z-index: 1;
     }
     #time, #loop {
-      font-size: 3em;
+      font-size: clamp(2rem, 6vw, 8rem);
       margin: 10px 0;
     }
     #status {
-      font-size: 1.5em;
+      font-size: clamp(1rem, 3vw, 3rem);
       margin-bottom: 10px;
     }
     #progressBarContainer {
@@ -68,7 +68,7 @@
       height: 100vh;
       background-color: rgba(0, 0, 0, 0.85);
       color: white;
-      font-size: 8em;
+      font-size: clamp(5rem, 12vw, 16rem);
       font-weight: bold;
       display: none;
       justify-content: center;
@@ -98,9 +98,9 @@
     <div id="progressBarContainer">
       <div id="progressBar"></div>
     </div>
-    <div id="runnersInfo" style="font-size:1.2em; margin-top:10px;"></div>
+    <div id="runnersInfo" style="font-size:clamp(1rem, 2.5vw, 3rem); margin-top:10px;"></div>
     <hr class="separator my-2">
-    <div id="quote" style="font-size:1.1em; margin-top:15px; color: white;"></div>
+    <div id="quote" style="font-size:clamp(1rem, 2.5vw, 2.5rem); margin-top:15px; color: white;"></div>
   </div>
   <div id="countdownOverlay"></div>
 
