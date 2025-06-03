@@ -6,56 +6,51 @@
   <title>Zegar Backyard</title>
   <style>
     html, body {
-      margin: 0; padding: 0;
-      background: #0a0a23;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      overflow: hidden;
-      font-family: 'Courier New', Courier, monospace;
-    }
+margin: 0; padding: 0;
+  background: #0a0a23;
+  font-family: 'Courier New', Courier, monospace;
+  /* usuń flex i centerowanie - damy to na #container */
+  height: 100%;
+  overflow: auto; /* zezwól na przewijanie, jeśli będzie potrzeba */
+}
+
 #container {
   background: #0a0a23;
   color: white;
   border-radius: 0px;
-  padding: 10px 15px;        /* zmniejszone */
+  padding: 40px 60px;
   text-align: center;
-  width: 95vw;               /* więcej szerokości */
-  max-width: 700px;          /* więcej niż 500px */
+  width: 90vw;
+  max-width: 900px; /* większe max */
+  margin: 20px auto; /* centrowanie z odstępem od góry */
   box-sizing: border-box;
-  position: relative;
-  z-index: 1;
-  white-space: nowrap;       /* brak zawijania */
-  overflow-x: auto;          /* jeśli brak miejsca - pojawi się poziomy scroll */
+  display: flex;
+  flex-direction: column;
+  gap: 30px; /* odstępy między elementami */
 }
 #time, #loop {
+  font-size: clamp(5rem, 10vw, 12rem); /* większa czcionka */
+  margin: 0;
   white-space: nowrap;
-  overflow-wrap: normal;
-  margin: 5px 0;
-  font-size: clamp(3rem, 8vw, 10rem); /* zwiększone wartości */
-  min-width: 250px; /* minimalna szerokość, by się nie kurczyły za mocno */
-  line-height: 1; /* lepsze wyrównanie pionowe */
 }
 
-    #status {
-      font-size: clamp(1rem, 3vw, 3rem);
-      margin-bottom: 10px;
-    }
-    #progressBarContainer {
-      background-color: #333;
-      border: none;
-      height: 20px;
-      border-radius: 10px;
-      overflow: hidden;
-      margin: 10px 0;
-    }
-    #progressBar {
-      height: 100%;
-      background-color: #ffcc00;
-      width: 0%;
-      transition: width 1s;
-    }
+#status {
+  font-size: clamp(2rem, 4vw, 4rem);
+  margin-bottom: 10px;
+}
+#progressBarContainer {
+  background-color: #333;
+  border-radius: 10px;
+  height: 30px; /* trochę wyższy pasek */
+  overflow: hidden;
+}
+#progressBar {
+  height: 100%;
+  background-color: #ffcc00;
+  width: 0%;
+  transition: width 1s;
+}
+
     @keyframes pulse {
       0% { opacity: 1; }
       50% { opacity: 0.4; }
@@ -65,13 +60,13 @@
       animation: pulse 1s infinite;
     }
     #quote {
-      color: #dddddd;
-white-space: normal;      /* pozwala na zawijanie tekstu */
-  overflow-wrap: break-word; /* wymusza łamanie długich słów */
-  word-break: break-word;   /* dodatkowe łamanie */
-  max-width: 100%;          /* zapobiega przekraczaniu szerokości kontenera */
-  margin: 15px 0 0 0;       /* opcjonalnie dopasuj margines */
-    }
+  font-size: clamp(1.5rem, 2.5vw, 3rem);
+  margin-top: 15px;
+  color: #dddddd;
+  white-space: normal;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
     #countdownOverlay {
       position: fixed;
       top: 0;
@@ -96,7 +91,7 @@ white-space: normal;      /* pozwala na zawijanie tekstu */
     }
     .separator {
       border: none;
-      height: 1px;
+      height: 5px;
       background: rgba(255, 255, 255, 0.2);
       margin: 0.5rem 0;
     }
