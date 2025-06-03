@@ -15,22 +15,29 @@
       overflow: hidden;
       font-family: 'Courier New', Courier, monospace;
     }
-    #container {
-      background: #0a0a23;
-      color: white;
-      border-radius: 0px;
-      padding: 30px 40px;
-      text-align: center;
-      width: 90vw;
-      max-width: 500px;
-      box-sizing: border-box;
-      position: relative;
-      z-index: 1;
-    }
-    #time, #loop {
-      font-size: clamp(2rem, 6vw, 8rem);
-      margin: 10px 0;
-    }
+#container {
+  background: #0a0a23;
+  color: white;
+  border-radius: 0px;
+  padding: 10px 15px;        /* zmniejszone */
+  text-align: center;
+  width: 95vw;               /* więcej szerokości */
+  max-width: 700px;          /* więcej niż 500px */
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+  white-space: nowrap;       /* brak zawijania */
+  overflow-x: auto;          /* jeśli brak miejsca - pojawi się poziomy scroll */
+}
+#time, #loop {
+  white-space: nowrap;
+  overflow-wrap: normal;
+  margin: 5px 0;
+  font-size: clamp(3rem, 8vw, 10rem); /* zwiększone wartości */
+  min-width: 250px; /* minimalna szerokość, by się nie kurczyły za mocno */
+  line-height: 1; /* lepsze wyrównanie pionowe */
+}
+
     #status {
       font-size: clamp(1rem, 3vw, 3rem);
       margin-bottom: 10px;
@@ -68,7 +75,7 @@
       height: 100vh;
       background-color: rgba(0, 0, 0, 0.85);
       color: white;
-      font-size: clamp(5rem, 12vw, 16rem);
+      font-size: 8em;
       font-weight: bold;
       display: none;
       justify-content: center;
