@@ -97,6 +97,7 @@
       background: rgba(255, 255, 255, 0.2);
       margin: 0.5rem 0;
     }
+
   </style>
 </head>
 <body>
@@ -110,6 +111,10 @@
     <div id="runnersInfo" style="font-size:clamp(1rem, 2.5vw, 3rem); margin-top:10px;"></div>
     <hr class="separator my-2">
     <div id="quote" style="font-size:clamp(1rem, 2.5vw, 2.5rem); margin-top:15px; color: white;"></div>
+<div id="distance" style="position: fixed; bottom: 10px; right: 10px; font-size: 0.9em; color: #fff; background: rgba(0,0,0,0.5); padding: 6px 10px; border-radius: 8px; z-index: 999;">
+  Dystans: 0.00 km
+</div>
+
   </div>
   <div id="countdownOverlay"></div>
 
@@ -163,7 +168,7 @@
       "Wygrywają ci, którzy się nie zatrzymali.",
       "Ciężko? Tym większy szacun.",
       "Nie ma limitu. Są tylko wymówki.",
-      "Dopóki walczysz, jesteś zwycięzcą. ~ św. Augustyn",
+      "Dopóki walczysz, jesteś zwycięzcą. ~ św.Augustyn",
       "Jeśli przechodzisz przez piekło – nie zatrzymuj się. ~ Winston Churchill",
       "Lepiej zużywać się niż rdzewieć. ~ Denis Diderot",
       "Im trudniej, tym większy triumf.",
@@ -206,6 +211,7 @@
         document.getElementById("progressBarContainer").style.display = "none";
         document.getElementById("quote").style.display = "none";
         runnersInfo.style.display = "none";
+
       } else {
         const diff = now - startDate;
         const hours = Math.floor(diff / 3600000);
@@ -221,6 +227,24 @@
         const progressBar = document.getElementById("progressBar");
         const progress = (minutesNum * 60 + secondsNum) / 3600 * 100;
         progressBar.style.width = `${progress}%`;
+
+// Dystans liczony na podstawie godzin:
+const totalMinutes = Math.floor(diff / 60000);
+const completedLoops = Math.floor(totalMinutes / 60);
+const minutesInCurrentLoop = totalMinutes % 60;
+
+let loopCount;
+if (minutesInCurrentLoop < 30) {
+  loopCount = completedLoops;
+} else {
+  loopCount = completedLoops + 1;
+}
+
+loopDisplay.textContent = `Pętla: ${loopCount}`;
+const distanceKm = (loopCount * 6.706).toFixed(2);
+document.getElementById("distance").textContent = `Dystans: ${distanceKm} km`;
+
+document.getElementById("distance").style.display = "block";
 
         if (minutesNum >= 59) {
           progressBar.style.backgroundColor = "#cc0000";
